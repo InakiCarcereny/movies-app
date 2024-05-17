@@ -1,26 +1,26 @@
 import { useState } from "react";
-import { ArrowLeft, 
-  ArrowRight, 
-  Home, 
-  User, 
-  Settings } from "../icons/Icons";
+import { Arrow1 } from "../icons/Arrow1"
+import { Arrow2 } from "../icons/Arrow2"
+import { HomeIcon } from "../icons/HomeIcon";
+import { SettingsIcon } from "../icons/SettingsIcon";
+import { UserIcon } from "../icons/UserIcon";
 import { List } from "./List";
 
 const info = [
   {
     id: 1,
     tittle: 'Home',
-    icon: Home,
+    icon: HomeIcon,
   },
   {
     id: 2,
     tittle: 'Profile',
-    icon: User
+    icon: UserIcon
   },
   {
     id: 3,
     tittle: 'Settings',
-    icon: Settings
+    icon: SettingsIcon
   }
 ]
 
@@ -35,7 +35,7 @@ export function AsideMenu () {
         <button 
         className=""
         onClick={() => setOpen(!open)}>
-          {open ? <ArrowRight /> : <ArrowLeft />}
+          {open ? <Arrow2 /> : <Arrow1 />}
         </button>
       </div>
       <nav className="flex flex-col justify-center px-2 mt-6">
