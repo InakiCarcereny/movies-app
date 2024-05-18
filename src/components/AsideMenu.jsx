@@ -28,17 +28,17 @@ export function AsideMenu () {
   const [open, setOpen] = useState(false)
 
   return (
-    <aside className={`flex flex-col h-screen bg-gray-100 my-2 mx-2 rounded-xl duration-200 
+    <aside className={`flex flex-col h-screen bg-gray-100 my-2 mx-2 rounded-xl duration-200 sticlky top-0
     ${open ? 'w-20' : 'w-60'}`}>
-      <div className="flex items-center justify-between px-2 py-2 gap-4">
+      <div className="flex items-center justify-between px-2 py-2 gap-4 sticky top-0">
         <h1 className={`text-2xl font-semibold ${open && 'hidden'}`}>MovieApp</h1>
         <button 
         className=""
         onClick={() => setOpen(!open)}>
-          {open ? <Arrow2 /> : <Arrow1 />}
+          {open ? <Arrow1 /> : <Arrow2 />}
         </button>
       </div>
-      <nav className="flex flex-col justify-center px-2 mt-6">
+      <nav className="flex flex-col justify-center px-2 mt-6 sticky top-16">
         <ul>
           {
             info.map(({ id, tittle, icon }) => (
