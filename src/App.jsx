@@ -4,10 +4,10 @@ import { Movies } from "./components/Movies"
 function App() {
 
   return (
-    <div className="flex">
+    <section className="flex">
       <AsideMenu />
       <Movies />
-    </div>
+    </section>
   )
 }
 
