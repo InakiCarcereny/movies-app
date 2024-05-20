@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react"
 import { RenderMovies } from "../components/RenderMovies"
+import { useFetchMovies } from "../hooks/useFetch"
+import { useSearchMovies } from "../hooks/useSearchMovies"
 
 export function Movies () {
-  const [movie, setMovie] = useState('')
-  const [error, setError] = useState(null)
-  const firstInput = useRef(true)
+  const { movie, error, setMovie } = useSearchMovies()
+  const { movies,loading, getMovies } = useFetchMovies({movie})
 
   const handleChange = (e) => {
     setMovie(e.target.value)
@@ -13,30 +13,8 @@ export function Movies () {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    getMovies({ movie })
   }
-
-  useEffect(() => {
-    if (firstInput.current) {
-      firstInput.current = movie === ''
-      return
-    }
-
-    if (movie === '') {
-      setError('la busqueda no puede estar vacía')
-      return
-    }
-    
-    if (movie.match(/^\d+$/)) {
-      setError('No se puede buscar una película con un número')
-      return
-    }
-
-    if (movie.length <= 3) {
-      setError('La busqueda tiene que tener al menos 3 caracteres')
-      return
-    }
-
-  },[movie])
 
   return (
     <section className="flex flex-col w-full h-screen bg-gray-100 my-2 mx-2 rounded-xl">
@@ -59,7 +37,7 @@ export function Movies () {
       </form>
 
       <main className="mt-6">
-          <RenderMovies />
+          {loading ? <p>Loading...</p> : <RenderMovies movies={movies} />}
       </main>
 
     </section>
